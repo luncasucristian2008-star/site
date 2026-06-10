@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipuri de Moștenire în POO C# | Practică de Instruire</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="bara-nav">
+        <div class="bara-nav-interior">
+            <a href="index.html" class="logo-nav">
+                Cristian Luncașu
+                <span>Practică de Instruire · CEEF</span>
+            </a>
+            <ul class="meniu-nav">
+                <li><a href="index.html">CV</a></li>
+                <li><a href="planificare_ex.html">Planificare</a></li>
+                <li><a href="tipuridemostenire.html" class="activ">Tipuri de moștenire</a></li>
+                <li><a href="probleme_practica.html">Probleme</a></li>
+                <li><a href="experiente_acumulate.html">Experiențe</a></li>
+                <li><a href="declaratie.html">Declarație</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container-principal">
+
+        <header class="antet-pagina">
+            <span class="eticheta-capitol">Cap. 2 · Unitatea de învățare analizată</span>
+            <h1 class="titlu-pagina">Tipuri de <em>moștenire</em> în POO C#</h1>
+            <p class="subtitlu-pagina">Tot despre tipurile de moștenire în programarea orientată pe obiecte, cu exemple de cod în C#.</p>
+        </header>
+
+        <div class="caseta-tema">
+            <span class="titlu-sectiune-mic">Definiție</span>
+            <h2 class="titlu-tema">Ce este <em>moștenirea</em>?</h2>
+            <p class="descriere-tema">Moștenirea este unul dintre pilonii fundamentali ai programării orientate pe obiecte. Permite unei clase (clasă derivată) să preia atribute și metode de la o altă clasă (clasă de bază), promovând reutilizarea codului și ierarhizarea logică a entităților.</p>
+        </div>
+
+        <h2 class="titlu-sectiune spatiu-jos-md">Tipuri de moștenire</h2>
+
+        <div class="grila-tipuri spatiu-jos-lg">
+
+            <div class="card-tip">
+                <span class="simbol-tip">Tip 01</span>
+                <p class="denumire-tip">Moștenire simplă</p>
+                <p class="descriere-tip">O clasă derivată moștenește de la o singură clasă de bază. Este cel mai comun tip, suportat direct în C# prin cuvântul cheie <code style="font-family:var(--font-cod); color:var(--culoare-accent); font-size:0.78rem;">:</code>.</p>
+            </div>
+
+            <div class="card-tip">
+                <span class="simbol-tip">Tip 02</span>
+                <p class="denumire-tip">Moștenire multiplă (prin interfețe)</p>
+                <p class="descriere-tip">C# nu permite moștenirea multiplă de la clase, dar o clasă poate implementa mai multe interfețe simultan, obținând un comportament similar.</p>
+            </div>
+
+            <div class="card-tip">
+                <span class="simbol-tip">Tip 03</span>
+                <p class="denumire-tip">Moștenire pe niveluri</p>
+                <p class="descriere-tip">O clasă derivată devine, la rândul ei, clasă de bază pentru o altă clasă. Formează un lanț ierarhic: <code style="font-family:var(--font-cod); color:var(--culoare-accent); font-size:0.78rem;">A → B → C</code>.</p>
+            </div>
+
+            <div class="card-tip">
+                <span class="simbol-tip">Tip 04</span>
+                <p class="denumire-tip">Moștenire ierarhică</p>
+                <p class="descriere-tip">Mai multe clase derivate moștenesc de la aceeași clasă de bază. Un exemplu clasic: <code style="font-family:var(--font-cod); color:var(--culoare-accent); font-size:0.78rem;">Animal → Câine, Pisică, Pasăre</code>.</p>
+            </div>
+
+            <div class="card-tip">
+                <span class="simbol-tip">Tip 05</span>
+                <p class="denumire-tip">Clase abstracte</p>
+                <p class="descriere-tip">O clasă marcată cu <code style="font-family:var(--font-cod); color:var(--culoare-accent); font-size:0.78rem;">abstract</code> nu poate fi instanțiată direct. Definește un contract pe care clasele derivate trebuie să-l implementeze.</p>
+            </div>
+
+            <div class="card-tip">
+                <span class="simbol-tip">Tip 06</span>
+                <p class="denumire-tip">Clase sealed</p>
+                <p class="descriere-tip">O clasă marcată cu <code style="font-family:var(--font-cod); color:var(--culoare-accent); font-size:0.78rem;">sealed</code> nu mai poate fi moștenită. Folosită când se dorește prevenirea extinderii ierarhiei.</p>
+            </div>
+
+        </div>
+
+        <h2 class="titlu-sectiune spatiu-jos-md">Cuvântul cheie <code style="font-family:var(--font-cod); color:var(--culoare-accent);">base</code></h2>
+        <div class="caseta-tema" style="margin-bottom:2rem;">
+            <span class="titlu-sectiune-mic">Concept</span>
+            <h2 class="titlu-tema">La ce servește <em>base</em>?</h2>
+            <p class="descriere-tema">Cuvântul cheie <code style="font-family:var(--font-cod); color:var(--culoare-accent);">base</code> permite clasei derivate să acceseze membrii (constructori, metode, proprietăți) clasei de bază. Este esențial atunci când clasa derivată suprascrie o metodă, dar dorește totuși să păstreze și comportamentul original al clasei de bază.</p>
+        </div>
+
+        <div class="bloc-cod">
+            <div class="antet-cod">
+                <span class="limba-cod">C# · Cuvântul cheie base</span>
+            </div>
+            <pre class="cod-sursa"><span class="cod-cuvant-cheie">public class</span> <span class="cod-clasa">Vehicul</span>
+{
+    <span class="cod-cuvant-cheie">public string</span> Marca { <span class="cod-cuvant-cheie">get</span>; <span class="cod-cuvant-cheie">set</span>; }
+
+    <span class="cod-cuvant-cheie">public</span> <span class="cod-clasa">Vehicul</span>(<span class="cod-cuvant-cheie">string</span> marca)
+    {
+        Marca = marca;
+        Console.WriteLine(<span class="cod-string">$"Vehicul creat: {Marca}"</span>);
+    }
+
+    <span class="cod-cuvant-cheie">public virtual void</span> Descrie()
+    {
+        Console.WriteLine(<span class="cod-string">$"Vehicul: {Marca}"</span>);
+    }
+}
+
+<span class="cod-cuvant-cheie">public class</span> <span class="cod-clasa">Masina</span> : <span class="cod-clasa">Vehicul</span>
+{
+    <span class="cod-cuvant-cheie">public int</span> NrUsi { <span class="cod-cuvant-cheie">get</span>; <span class="cod-cuvant-cheie">set</span>; }
+
+    <span class="cod-comentariu">// Apelăm constructorul clasei de bază cu base()</span>
+    <span class="cod-cuvant-cheie">public</span> <span class="cod-clasa">Masina</span>(<span class="cod-cuvant-cheie">string</span> marca, <span class="cod-cuvant-cheie">int</span> nrUsi)
+        : <span class="cod-cuvant-cheie">base</span>(marca)
+    {
+        NrUsi = nrUsi;
+    }
+
+    <span class="cod-cuvant-cheie">public override void</span> Descrie()
+    {
+        <span class="cod-comentariu">// Apelăm metoda din clasa de bază, apoi adăugăm info extra</span>
+        <span class="cod-cuvant-cheie">base</span>.Descrie();
+        Console.WriteLine(<span class="cod-string">$"Număr uși: {NrUsi}"</span>);
+    }
+}</pre>
+        </div>
+
+        <h2 class="titlu-sectiune spatiu-jos-md" style="margin-top:3rem;">Polimorfismul în moștenire</h2>
+        <div class="caseta-tema" style="margin-bottom:2rem;">
+            <span class="titlu-sectiune-mic">Concept</span>
+            <h2 class="titlu-tema">Ce este <em>polimorfismul</em>?</h2>
+            <p class="descriere-tema">Polimorfismul (din gr. „multe forme") permite ca un obiect al unei clase derivate să fie tratat ca un obiect al clasei de bază. Combinat cu metodele <code style="font-family:var(--font-cod); color:var(--culoare-accent);">virtual</code> și <code style="font-family:var(--font-cod); color:var(--culoare-accent);">override</code>, fiecare clasă derivată poate răspunde diferit la același apel de metodă.</p>
+        </div>
+
+        <div class="bloc-cod">
+            <div class="antet-cod">
+                <span class="limba-cod">C# · Polimorfism cu virtual / override</span>
+            </div>
+            <pre class="cod-sursa"><span class="cod-cuvant-cheie">public class</span> <span class="cod-clasa">Forma</span>
+{
+    <span class="cod-cuvant-cheie">public virtual void</span> Deseneaza()
+        => Console.WriteLine(<span class="cod-string">"Desenez o formă generică."</span>);
+}
+
+<span class="cod-cuvant-cheie">public class</span> <span class="cod-clasa">Cerc</span> : <span class="cod-clasa">Forma</span>
+{
+    <span class="cod-cuvant-cheie">public override void</span> Deseneaza()
+        => Console.WriteLine(<span class="cod-string">"Desenez un cerc."</span>);
+}
+
+<span class="cod-cuvant-cheie">public class</span> <span class="cod-clasa">Dreptunghi</span> : <span class="cod-clasa">Forma</span>
+{
+    <span class="cod-cuvant-cheie">public override void</span> Deseneaza()
+        => Console.WriteLine(<span class="cod-string">"Desenez un dreptunghi."</span>);
+}
+
+<span class="cod-comentariu">// Polimorfism în acțiune</span>
+<span class="cod-clasa">Forma</span>[] forme = { <span class="cod-cuvant-cheie">new</span> <span class="cod-clasa">Cerc</span>(), <span class="cod-cuvant-cheie">new</span> <span class="cod-clasa">Dreptunghi</span>(), <span class="cod-cuvant-cheie">new</span> <span class="cod-clasa">Forma</span>() };
+
+<span class="cod-cuvant-cheie">foreach</span> (<span class="cod-cuvant-cheie">var</span> f <span class="cod-cuvant-cheie">in</span> forme)
+    f.Deseneaza();
+
+<span class="cod-comentariu">// Output:
+// Desenez un cerc.
+// Desenez un dreptunghi.
+// Desenez o formă generică.</span></pre>
+        </div>
+
+        <h2 class="titlu-sectiune spatiu-jos-md" style="margin-top:3rem;">Moștenire hibridă</h2>
+        <div class="caseta-tema" style="margin-bottom:2rem;">
+            <span class="titlu-sectiune-mic">Concept avansat</span>
+            <h2 class="titlu-tema">Combinarea tipurilor de moștenire</h2>
+            <p class="descriere-tema">Moștenirea hibridă combină mai multe tipuri de moștenire (de ex. ierarhică + pe niveluri) în aceeași aplicație. În C# se realizează prin combinarea claselor și interfețelor, creând ierarhii complexe, dar organizate.</p>
+        </div>
+
+        <div class="bloc-cod">
+            <div class="antet-cod">
+                <span class="limba-cod">C# · Moștenire hibridă (ierarhică + pe niveluri)</span>
+            </div>
+            <pre class="cod-sursa"><span class="cod-comentariu">// Nivelul 1 — clasă de bază</span>
+<span class="cod-cuvant-cheie">public class</span> <span class="cod-clasa">Angajat</span>
+{
+    <span class="cod-cuvant-cheie">public string</span> Nume { <span class="cod-cuvant-cheie">get</span>; <span class="cod-cuvant-cheie">set</span>; }
+    <span class="cod-cuvant-cheie">public virtual void</span> Rol() => Console.WriteLine(<span class="cod-string">"Angajat general"</span>);
+}
+
+<span class="cod-comentariu">// Nivelul 2 — moștenire pe niveluri</span>
+<span class="cod-cuvant-cheie">public class</span> <span class="cod-clasa">Manager</span> : <span class="cod-clasa">Angajat</span>
+{
+    <span class="cod-cuvant-cheie">public override void</span> Rol() => Console.WriteLine(<span class="cod-string">"Manager"</span>);
+}
+
+<span class="cod-comentariu">// Nivelul 3 — tot pe niveluri</span>
+<span class="cod-cuvant-cheie">public class</span> <span class="cod-clasa">Director</span> : <span class="cod-clasa">Manager</span>
+{
+    <span class="cod-cuvant-cheie">public override void</span> Rol() => Console.WriteLine(<span class="cod-string">"Director"</span>);
+}
+
+<span class="cod-comentariu">// Moștenire ierarhică — ambele din Angajat</span>
+<span class="cod-cuvant-cheie">public class</span> <span class="cod-clasa">Programator</span> : <span class="cod-clasa">Angajat</span>
+{
+    <span class="cod-cuvant-cheie">public override void</span> Rol() => Console.WriteLine(<span class="cod-string">"Programator"</span>);
+}</pre>
+        </div>
+
+        <h2 class="titlu-sectiune spatiu-jos-md" style="margin-top:3rem;">Tabel comparativ</h2>
+
+        <div style="overflow-x:auto; margin-bottom:3rem;" class="tabel-div">
+            <table style="width:100%; border-collapse:collapse; font-size:0.92rem;">
+                <thead>
+                    <tr style="background:var(--culoare-accent, #6c63ff); color:#fff;">
+                        <th style="padding:0.75rem 1rem; text-align:left;">Mecanism</th>
+                        <th style="padding:0.75rem 1rem; text-align:left;">Instanțiabilă?</th>
+                        <th style="padding:0.75rem 1rem; text-align:left;">Poate fi moștenită?</th>
+                        <th style="padding:0.75rem 1rem; text-align:left;">Implementare obligatorie?</th>
+                        <th style="padding:0.75rem 1rem; text-align:left;">Utilizare tipică</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom:1px solid #e2e8f0; ">
+                        <td style="padding:0.7rem 1rem;"><strong>Clasă normală</strong></td>
+                        <td style="padding:0.7rem 1rem;">✅ Da</td>
+                        <td style="padding:0.7rem 1rem;">✅ Da</td>
+                        <td style="padding:0.7rem 1rem;">—</td>
+                        <td style="padding:0.7rem 1rem;">Obiect concret cu stare și comportament</td>
+                    </tr>
+                    <tr style="background:#f8f9ff; border-bottom:1px solid #e2e8f0;color: #000;">
+                        <td style="padding:0.7rem 1rem;"><strong>Clasă abstractă</strong></td>
+                        <td style="padding:0.7rem 1rem;">❌ Nu</td>
+                        <td style="padding:0.7rem 1rem;">✅ Da</td>
+                        <td style="padding:0.7rem 1rem;">✅ Metodele abstracte</td>
+                        <td style="padding:0.7rem 1rem;">Șablon comun cu logică parțială</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #e2e8f0;">
+                        <td style="padding:0.7rem 1rem;"><strong>Interfață</strong></td>
+                        <td style="padding:0.7rem 1rem;">❌ Nu</td>
+                        <td style="padding:0.7rem 1rem;">✅ Da (alte interfețe)</td>
+                        <td style="padding:0.7rem 1rem;">✅ Toți membrii (implicit)</td>
+                        <td style="padding:0.7rem 1rem;">Contract de comportament, moștenire multiplă</td>
+                    </tr>
+                    <tr style="background:#f8f9ff; border-bottom:1px solid #e2e8f0;color: #000;">
+                        <td style="padding:0.7rem 1rem;"><strong>Clasă sealed</strong></td>
+                        <td style="padding:0.7rem 1rem;">✅ Da</td>
+                        <td style="padding:0.7rem 1rem;">❌ Nu</td>
+                        <td style="padding:0.7rem 1rem;">—</td>
+                        <td style="padding:0.7rem 1rem;">Prevenirea extinderii nedorite</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="titlu-sectiune spatiu-jos-md">Exemplu — Moștenire simplă</h2>
+        <div class="bloc-cod">
+            <div class="antet-cod">
+                <span class="limba-cod">C# · Moștenire simplă</span>
+            </div>
+            <pre class="cod-sursa"><span class="cod-comentariu">// Clasa de bază</span>
+<span class="cod-cuvant-cheie">public class</span> <span class="cod-clasa">Animal</span>
+{
+    <span class="cod-cuvant-cheie">public string</span> Nume { <span class="cod-cuvant-cheie">get</span>; <span class="cod-cuvant-cheie">set</span>; }
+
+    <span class="cod-cuvant-cheie">public virtual void</span> Sunet()
+    {
+        Console.WriteLine(<span class="cod-string">"Animalul face un sunet."</span>);
+    }
+}
+
+<span class="cod-comentariu">// Clasa derivată</span>
+<span class="cod-cuvant-cheie">public class</span> <span class="cod-clasa">Caine</span> : <span class="cod-clasa">Animal</span>
+{
+    <span class="cod-cuvant-cheie">public override void</span> Sunet()
+    {
+        Console.WriteLine(<span class="cod-string">"Câinele latră: Ham! Ham!"</span>);
+    }
+}</pre>
+        </div>
+
+        <h2 class="titlu-sectiune spatiu-jos-md">Exemplu — Moștenire multiplă prin interfețe</h2>
+        <div class="bloc-cod">
+            <div class="antet-cod">
+                <span class="limba-cod">C# · Interfețe multiple</span>
+            </div>
+            <pre class="cod-sursa"><span class="cod-cuvant-cheie">public interface</span> <span class="cod-clasa">INotabil</span>
+{
+    <span class="cod-cuvant-cheie">void</span> AfiseazaNota();
+}
+
+<span class="cod-cuvant-cheie">public interface</span> <span class="cod-clasa">IPrezentabil</span>
+{
+    <span class="cod-cuvant-cheie">void</span> Prezinta();
+}
+
+<span class="cod-comentariu">// Clasa implementează ambele interfețe</span>
+<span class="cod-cuvant-cheie">public class</span> <span class="cod-clasa">Elev</span> : <span class="cod-clasa">INotabil</span>, <span class="cod-clasa">IPrezentabil</span>
+{
+    <span class="cod-cuvant-cheie">public void</span> AfiseazaNota()  => Console.WriteLine(<span class="cod-string">"Nota: 10"</span>);
+    <span class="cod-cuvant-cheie">public void</span> Prezinta()      => Console.WriteLine(<span class="cod-string">"Mă numesc Cristian."</span>);
+}</pre>
+        </div>
+
+        <h2 class="titlu-sectiune spatiu-jos-md">Exemplu — Clasă abstractă</h2>
+        <div class="bloc-cod">
+            <div class="antet-cod">
+                <span class="limba-cod">C# · Abstract</span>
+            </div>
+            <pre class="cod-sursa"><span class="cod-cuvant-cheie">public abstract class</span> <span class="cod-clasa">Forma</span>
+{
+    <span class="cod-comentariu">// Metoda abstractă — fără implementare</span>
+    <span class="cod-cuvant-cheie">public abstract double</span> Arie();
+
+    <span class="cod-comentariu">// Metodă concretă — cu implementare</span>
+    <span class="cod-cuvant-cheie">public void</span> Descrie()
+    {
+        Console.WriteLine(<span class="cod-string">$"Aria formei este: {Arie()}"</span>);
+    }
+}
+
+<span class="cod-cuvant-cheie">public class</span> <span class="cod-clasa">Cerc</span> : <span class="cod-clasa">Forma</span>
+{
+    <span class="cod-cuvant-cheie">private double</span> raza;
+
+    <span class="cod-cuvant-cheie">public</span> <span class="cod-clasa">Cerc</span>(<span class="cod-cuvant-cheie">double</span> raza) => <span class="cod-cuvant-cheie">this</span>.raza = raza;
+
+    <span class="cod-cuvant-cheie">public override double</span> Arie() => Math.PI * raza * raza;
+}</pre>
+        </div>
+
+        <h2 class="titlu-sectiune spatiu-jos-md" style="margin-top:3rem;">Greșeli frecvente</h2>
+
+        <div class="grila-tipuri spatiu-jos-lg">
+
+            <div class="card-tip" style="border-left: 4px solid #e53e3e;">
+                <span class="simbol-tip" style="color:#e53e3e;">⚠ 01</span>
+                <p class="denumire-tip">Uitarea cuvântului <code style="font-family:var(--font-cod); color:var(--culoare-accent); font-size:0.85rem;">override</code></p>
+                <p class="descriere-tip">Dacă o metodă virtuală nu este marcată cu <code style="font-family:var(--font-cod); color:var(--culoare-accent); font-size:0.78rem;">override</code> în clasa derivată, ea ascunde metoda de bază în loc să o suprascrie — comportament diferit și periculos.</p>
+            </div>
+
+            <div class="card-tip" style="border-left: 4px solid #e53e3e;">
+                <span class="simbol-tip" style="color:#e53e3e;">⚠ 02</span>
+                <p class="denumire-tip">Instanțierea unei clase abstracte</p>
+                <p class="descriere-tip">Clasele abstracte nu pot fi instanțiate direct (<code style="font-family:var(--font-cod); color:var(--culoare-accent); font-size:0.78rem;">new Forma()</code> va produce eroare de compilare). Ele servesc doar ca bază pentru alte clase.</p>
+            </div>
+
+            <div class="card-tip" style="border-left: 4px solid #e53e3e;">
+                <span class="simbol-tip" style="color:#e53e3e;">⚠ 03</span>
+                <p class="denumire-tip">Moștenire excesivă</p>
+                <p class="descriere-tip">Ierarhii prea adânci fac codul greu de înțeles și întreținut. Regula generală: dacă ai mai mult de 3–4 niveluri, reconsideră designul și folosește compoziția în locul moștenirii.</p>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="subsol">
+        Practică de Instruire · CEEF Chișinău · Cristian Luncașu · 2025–2026
+    </footer>
+
+</body>
+</html>
